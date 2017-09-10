@@ -1,6 +1,7 @@
 #include "ofApp.h"
 #include "hardwareController.h"
 #include "moduleFactory.h"
+#include "hardwareView.h"
 #include "timer.h"
 
 hardwareController x16pad;
@@ -8,7 +9,7 @@ hardwareController x16pad;
 //https://en.wikibooks.org/wiki/C%2B%2B_Programming/Code/Design_Patterns#Programming_Patterns
 
 //testing:
-module *mm = moduleFactory::newModule(3);
+module *mm [16];
 Scheduler *ttimer;
 
 int test = 0;
@@ -18,18 +19,21 @@ void onMatrixButton(unsigned char button, unsigned int map) {
 	test++;
 
 	ofLog(OF_LOG_NOTICE, "callback received %d %d",button,map);
-	mm->onMatrixButtonPressed(button, map);
+	mm[0]->onMatrixButtonPressed(button, map);
 	
 };
 
 void ofApp::setup(){
-	ttimer = new Scheduler(mm);
+
+	mm[0] = moduleFactory::newModule(3);
+
+	ttimer = new Scheduler(mm[0]);
 	x16pad.setup();
 	x16pad.addMatrixButttonPressedCallback(onMatrixButton);
 
-	if (!mm)
+	if (!mm[0])
 		ofLog(OF_LOG_NOTICE, "mm evals false");
-	mm->init(x16pad);
+	mm[0]->init(x16pad);
 
 
 	bSendSerialMessage = false;
