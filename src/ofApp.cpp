@@ -12,7 +12,7 @@ module *mm = moduleFactory::newModule(1);
 int test = 0;
 
 void onMatrixButton(unsigned char button, unsigned int map) {
-	x16pad.setLed(1<<button, 1 << button, 1 << button);
+	x16pad.setLed(1<<button, 1 << button, map);
 	test++;
 
 	ofLog(OF_LOG_NOTICE, "callback received %d %d",button,map);

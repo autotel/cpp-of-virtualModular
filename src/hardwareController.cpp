@@ -214,8 +214,8 @@ void hardwareController::messageReceived(unsigned char datarray [], int len) {
 			}
 			case RH_buttonMatrixPressed: {
 				ofLog(OF_LOG_NOTICE, "button %d", datarray[1]);
-				ofLog(OF_LOG_NOTICE, "btnMx received %d", datarray[1]);
-				matrixButtonCallback((unsigned char) datarray[1], datarray[2] | ( datarray[3]<<8 ) );
+				ofLog(OF_LOG_NOTICE, "btnMx received %d, %d, %d, %d", datarray[1], datarray[2], datarray[3], datarray[4]);
+				matrixButtonCallback((unsigned char) datarray[1], datarray[3] | ( datarray[4]<<8 ) );
 				break;
 			}
 			default:
