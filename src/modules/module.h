@@ -2,8 +2,7 @@
 class module
 {
 public:
-	virtual void init(/* screen writing function, led writing function */) = 0;
-	
+	virtual void init(hardwareController & HWCont) = 0;
 	virtual void onMatrixButtonPressed(unsigned char button, unsigned int map) = 0;
 	virtual void engage() = 0;
 	virtual void disengage() = 0;

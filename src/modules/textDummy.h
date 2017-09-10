@@ -5,7 +5,7 @@
 class textDummy : public module
 {
 public:
-	void init() override { mOn = true; };
+	void init(hardwareController & HWCont) override { mOn = true; };
 	void setOutput() override {};
 	void onMatrixButtonPressed(unsigned char button, unsigned int map) override {
 		mOn = false;

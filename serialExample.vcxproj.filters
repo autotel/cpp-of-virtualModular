@@ -122,6 +122,9 @@
     <ClInclude Include="src\modules\patchMenu.h">
       <Filter>src\modules</Filter>
     </ClInclude>
+    <ClInclude Include="src\timer.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

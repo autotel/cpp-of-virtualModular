@@ -8,7 +8,7 @@ class midiDummy : public module
 {
 public:
 	ofxMidiOut midiOut;
-	void init() override {
+	void init(hardwareController & HWCont) override {
 		ofLog(OF_LOG_NOTICE,"created midi dummy");
 		mOn = true; 
 

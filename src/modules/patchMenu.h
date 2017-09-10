@@ -8,7 +8,7 @@
 class patchMenu : public module
 {
 public:
-	void init() override {
+	void init(hardwareController & HWCont) override {
 		ofLog(OF_LOG_NOTICE, "created patch menu");
 	};
 	void setOutput() override {};

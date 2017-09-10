@@ -1,18 +1,20 @@
 #include "ofApp.h"
 #include "hardwareController.h"
 #include "moduleFactory.h"
+#include "timer.h"
 
 hardwareController x16pad;
 //use factory pattern
 //https://en.wikibooks.org/wiki/C%2B%2B_Programming/Code/Design_Patterns#Programming_Patterns
 
 //testing:
-module *mm = moduleFactory::newModule(1);
+module *mm = moduleFactory::newModule(3);
+Scheduler *ttimer;
 
 int test = 0;
 
 void onMatrixButton(unsigned char button, unsigned int map) {
-	x16pad.setLed(1<<button, 1 << button, map);
+	
 	test++;
 
 	ofLog(OF_LOG_NOTICE, "callback received %d %d",button,map);
@@ -21,13 +23,13 @@ void onMatrixButton(unsigned char button, unsigned int map) {
 };
 
 void ofApp::setup(){
-
+	ttimer = new Scheduler(mm);
 	x16pad.setup();
 	x16pad.addMatrixButttonPressedCallback(onMatrixButton);
 
 	if (!mm)
 		ofLog(OF_LOG_NOTICE, "mm evals false");
-	mm->init();
+	mm->init(x16pad);
 
 
 	bSendSerialMessage = false;
@@ -49,10 +51,8 @@ void ofApp::setup(){
 }
 
 
-
 void ofApp::update(){
 	x16pad.checkMessages();
-	
 }
 
 void ofApp::draw(){
