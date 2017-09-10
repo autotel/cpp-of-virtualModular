@@ -9,11 +9,15 @@ hardwareController x16pad;
 //testing:
 module *mm = moduleFactory::newModule(1);
 
-
+int test = 0;
 
 void onMatrixButton(unsigned char button, unsigned int map) {
+	x16pad.setLed(map,map,map);
+	test++;
+
 	ofLog(OF_LOG_NOTICE, "callback received %d %d",button,map);
 	mm->onMatrixButtonPressed(button, map);
+	
 };
 
 void ofApp::setup(){
@@ -40,6 +44,8 @@ void ofApp::setup(){
 	nBytesRead = 0;
 	readTime = 0;
 	memset(bytesReadString, 0, 4);
+
+	
 }
 
 

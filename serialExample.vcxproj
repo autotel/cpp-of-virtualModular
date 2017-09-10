@@ -205,6 +205,7 @@
     <ClInclude Include="src\moduleFactory.h" />
     <ClInclude Include="src\modules\midiDummy.h" />
     <ClInclude Include="src\modules\module.h" />
+    <ClInclude Include="src\modules\patchMenu.h" />
     <ClInclude Include="src\modules\sequencer.h" />
     <ClInclude Include="src\modules\textDummy.h" />
     <ClInclude Include="src\ofApp.h" />

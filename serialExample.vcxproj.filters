@@ -119,6 +119,9 @@
     <ClInclude Include="src\modules\sequencer.h">
       <Filter>src\modules</Filter>
     </ClInclude>
+    <ClInclude Include="src\modules\patchMenu.h">
+      <Filter>src\modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

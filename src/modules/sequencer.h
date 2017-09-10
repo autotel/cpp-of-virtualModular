@@ -9,10 +9,11 @@ class sequencer : public module
 {
 public:
 	ofxMidiOut midiOut;
+	int dummyPattern [16][3];
+	int patternBitMap = 0x0000;
+	int playHead = 0;
 	void init() override {
 		ofLog(OF_LOG_NOTICE, "created midi dummy");
-		mOn = true;
-
 		midiOut.listPorts(); // via instance
 							 //ofxMidiOut::listPorts(); // via static too
 		midiOut.openPort(1); // by number
@@ -23,10 +24,17 @@ public:
 	void setOutput() override {};
 	void engage() override {};
 	void disengage() override {};
-	void receive() override {}
+	void receive() override {
+		playHead++;
+		if (dummyPattern[playHead]) {
+			midiOut.sendNoteOn(dummyPattern[playHead][0], dummyPattern[playHead][1] , dummyPattern[playHead][2]);
+		}
+	}
 	void onMatrixButtonPressed(unsigned char button, unsigned int map) override {
-		mOn = false;
-		midiOut.sendNoteOn(10, 36 + button, 100);
+		dummyPattern[button][0] = 10;
+		dummyPattern[button][1] = 40;
+		dummyPattern[button][2] = 110;
+		patternBitMap |= 0x1 << button;
 	};
 	virtual ~sequencer() {};
 private:

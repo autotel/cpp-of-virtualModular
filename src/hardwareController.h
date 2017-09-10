@@ -12,6 +12,7 @@ class hardwareController {//: public ofBaseApp
 		//void receiveByte(unsigned char byte);
 		void checkMessages();
 		void messageReceived(unsigned char datarray[], int len);
+		void setLed(int r, int g, int b);
 		void sendScreenA(char str[]);
 		void sendScreenB(char str[]);
 		ofSerial	serial;

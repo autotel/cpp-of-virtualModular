@@ -27,6 +27,23 @@
 #define RH_comTester 0x0B
 #define RH_comTester_len 0x1
 
+#define TH_null 0x0
+#define TH_null_len 0x0
+#define TH_hello 0x1
+#define TH_hello_len 0x0
+#define TH_ledMatrix 0x2
+#define TH_ledMatrix_len 0x6
+#define TH_screenA 0x3
+#define TH_screenA_len -1
+#define TH_screenB 0x4
+#define TH_screenB_len -1
+#define TH_setInteractionMode 0x5
+#define TH_setInteractionMode_len 0x4
+#define TH_currentStep 0x6
+#define TH_currentStep_len 0x2
+#define TH_comTester 0x7
+#define TH_comTester_len 0x1
+
 #define serialInLength 32
 unsigned char inBuff[serialInLength];
 
@@ -205,6 +222,16 @@ void hardwareController::messageReceived(unsigned char datarray [], int len) {
 				a++;
 		}
 	}
+}
+//TODO This is working strange, I can't figure out why yet.
+void hardwareController::setLed(int r, int g, int b) {
+	unsigned char msg[] = { 
+		TH_ledMatrix,
+		(g >> 8) & 0xff, g & 0xff,
+		(b >> 8) & 0xff, b & 0xff,
+		(r >> 8) & 0xff, r & 0xff
+	};
+	serial.writeBytes(msg, TH_ledMatrix_len);
 }
 
 void hardwareController::sendScreenA(char str[]) {
