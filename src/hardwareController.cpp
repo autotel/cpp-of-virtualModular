@@ -225,13 +225,13 @@ void hardwareController::messageReceived(unsigned char datarray [], int len) {
 }
 //TODO This is working strange, I can't figure out why yet.
 void hardwareController::setLed(int r, int g, int b) {
-	unsigned char msg[] = { 
+	unsigned char msg[] = {
 		TH_ledMatrix,
-		(g >> 8) & 0xff, g & 0xff,
-		(b >> 8) & 0xff, b & 0xff,
-		(r >> 8) & 0xff, r & 0xff
+		g & 0xff,(g >> 8) & 0xff,
+		b & 0xff,(b >> 8) & 0xff,
+		r & 0xff,(r >> 8) & 0xff
 	};
-	serial.writeBytes(msg, TH_ledMatrix_len);
+	serial.writeBytes(msg, TH_ledMatrix_len + 1);
 }
 
 void hardwareController::sendScreenA(char str[]) {
