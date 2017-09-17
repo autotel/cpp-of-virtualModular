@@ -125,6 +125,12 @@
     <ClInclude Include="src\timer.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\hardwareView.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\eventMessage.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

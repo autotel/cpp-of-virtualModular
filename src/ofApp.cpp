@@ -1,8 +1,10 @@
 #include "ofApp.h"
 #include "hardwareController.h"
+#include "eventMessage.h"
 #include "moduleFactory.h"
 #include "hardwareView.h"
 #include "timer.h"
+
 
 hardwareController x16pad;
 //use factory pattern
@@ -25,8 +27,9 @@ void onMatrixButton(unsigned char button, unsigned int map) {
 
 void ofApp::setup(){
 
-	mm[0] = moduleFactory::newModule(3);
-
+	mm[0] = moduleFactory::newModule(MODULE_SEQUENCER);
+	mm[1] = moduleFactory::newModule(MODULE_MIDI);
+	mm[0]->setOutput(mm[1]);
 	ttimer = new Scheduler(mm[0]);
 	x16pad.setup();
 	x16pad.addMatrixButttonPressedCallback(onMatrixButton);
@@ -34,7 +37,7 @@ void ofApp::setup(){
 	if (!mm[0])
 		ofLog(OF_LOG_NOTICE, "mm evals false");
 	mm[0]->init(x16pad);
-
+	mm[1]->init(x16pad);
 
 	bSendSerialMessage = false;
 #if GUI 

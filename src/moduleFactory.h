@@ -4,6 +4,10 @@
 #include "./modules/midiDummy.h"
 #include "./modules/textDummy.h"
 #include "./modules/sequencer.h"
+ 
+#define MODULE_SEQUENCER 3
+#define MODULE_MIDI 1
+
 class moduleFactory
 {
 public:

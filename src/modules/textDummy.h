@@ -6,14 +6,14 @@ class textDummy : public module
 {
 public:
 	void init(hardwareController & HWCont) override { mOn = true; };
-	void setOutput() override {};
+	void setOutput(module *m) override {};
 	void onMatrixButtonPressed(unsigned char button, unsigned int map) override {
 		mOn = false;
 		ofLog(OF_LOG_NOTICE, "Pliiiing ");
 	};
 	void engage() override {};
 	void disengage() override {};
-	void receive() override {}
+	void receive(eventMessage m) override {}
 	virtual ~textDummy() {};
 private:
 	bool mOn;
