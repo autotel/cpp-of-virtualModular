@@ -1,6 +1,6 @@
 #pragma once
 
-#include "./modules/patchMenu.h"
+
 #include "./modules/midiDummy.h"
 #include "./modules/textDummy.h"
 #include "./modules/sequencer.h"

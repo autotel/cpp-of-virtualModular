@@ -1,6 +1,7 @@
 #include "ofApp.h"
 #include "hardwareController.h"
 #include "eventMessage.h"
+#include "interactorFactory.h"
 #include "moduleFactory.h"
 #include "hardwareView.h"
 #include "timer.h"

@@ -1,6 +1,6 @@
 #pragma once
 #ifndef module
-#include "./modules/module.h"
+#include "./interactions/eventSelector.h"
 #endif // !module
 //#include "ofxMidi.h"
 //https://github.com/danomatika/ofxMidi
@@ -10,11 +10,12 @@ class sequencer : public module
 public:
 	//ofxMidiOut midiOut;
 	module *moutput;
-	int dummyPattern [16][3];
+	int dummyPattern[16][3];
 	int patternBitMap = 0x0000;
 	int playHead = 0;
+
+	interactor *eventSelector;
 	
-	eventSelector eventSelector();
 
 	hardwareController myX16pad;
 	void init(hardwareController & HWCont) override {
@@ -29,6 +30,7 @@ public:
 							 //midiOut.openPort("IAC Driver Pure Data In"); // by name
 							 //midiOut.openVirtualPort("ofxMidiOut"); // open a virtual port
 		//midiOut.sendNoteOn(10, 45, 100);
+		eventSelector = interactorFactory::newModule(1);
 	};
 	void setOutput(module *m) override {
 		moutput = m;

@@ -10,12 +10,6 @@
     <ClCompile Include="src\hardwareController.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\modules\midiDummy.cpp">
-      <Filter>src\modules</Filter>
-    </ClCompile>
-    <ClCompile Include="src\modules\module.cpp">
-      <Filter>src\modules</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxBaseMidi.cpp">
       <Filter>ofxMidi</Filter>
     </ClCompile>
@@ -51,6 +45,12 @@
     <Filter Include="ofxMidi">
       <UniqueIdentifier>{1e85d7c3-693f-4805-9969-d96cb1cd3630}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\interactions">
+      <UniqueIdentifier>{35ce046d-4744-4a93-b4eb-ed954268eae5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\%28factories%29">
+      <UniqueIdentifier>{cb2fb265-b439-4709-a202-b4c4ee45c5a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
@@ -64,9 +64,6 @@
     </ClInclude>
     <ClInclude Include="src\modules\module.h">
       <Filter>src\modules</Filter>
-    </ClInclude>
-    <ClInclude Include="src\moduleFactory.h">
-      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\modules\textDummy.h">
       <Filter>src\modules</Filter>
@@ -119,9 +116,6 @@
     <ClInclude Include="src\modules\sequencer.h">
       <Filter>src\modules</Filter>
     </ClInclude>
-    <ClInclude Include="src\modules\patchMenu.h">
-      <Filter>src\modules</Filter>
-    </ClInclude>
     <ClInclude Include="src\timer.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -130,6 +124,21 @@
     </ClInclude>
     <ClInclude Include="src\eventMessage.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\interactions\eventSelector.h">
+      <Filter>src\interactions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\interactions\patchMenu.h">
+      <Filter>src\interactions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\interactions\interactor.h">
+      <Filter>src\interactions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\interactorFactory.h">
+      <Filter>src\%28factories%29</Filter>
+    </ClInclude>
+    <ClInclude Include="src\moduleFactory.h">
+      <Filter>src\%28factories%29</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

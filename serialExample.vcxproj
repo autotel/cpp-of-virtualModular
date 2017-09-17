@@ -181,8 +181,6 @@
     <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiOut.cpp" />
     <ClCompile Include="src\hardwareController.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\modules\midiDummy.cpp" />
-    <ClCompile Include="src\modules\module.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -204,10 +202,13 @@
     <ClInclude Include="src\eventMessage.h" />
     <ClInclude Include="src\hardwareController.h" />
     <ClInclude Include="src\hardwareView.h" />
+    <ClInclude Include="src\interactorFactory.h" />
+    <ClInclude Include="src\interactions\eventSelector.h" />
+    <ClInclude Include="src\interactions\interactor.h" />
+    <ClInclude Include="src\interactions\patchMenu.h" />
     <ClInclude Include="src\moduleFactory.h" />
     <ClInclude Include="src\modules\midiDummy.h" />
     <ClInclude Include="src\modules\module.h" />
-    <ClInclude Include="src\modules\patchMenu.h" />
     <ClInclude Include="src\modules\sequencer.h" />
     <ClInclude Include="src\modules\textDummy.h" />
     <ClInclude Include="src\ofApp.h" />
