@@ -1,21 +1,21 @@
 #pragma once
-#ifndef module
-#include "./interactions/eventSelector.h"
+#ifndef Module
+#include "./interactors/EventSelector.h"
 #endif // !module
 //#include "ofxMidi.h"
 //https://github.com/danomatika/ofxMidi
 
-class sequencer : public module
+class Sequencer : public Module
 {
 public:
 	//ofxMidiOut midiOut;
-	module *moutput;
+	Module *moutput;
 	int dummyPattern[16][3];
 	int patternBitMap = 0x0000;
 	int playHead = 0;
 
-	interactor *eventSelector;
-	
+	Interactor *eventSelector;
+
 
 	hardwareController myX16pad;
 	void init(hardwareController & HWCont) override {
@@ -30,32 +30,48 @@ public:
 							 //midiOut.openPort("IAC Driver Pure Data In"); // by name
 							 //midiOut.openVirtualPort("ofxMidiOut"); // open a virtual port
 		//midiOut.sendNoteOn(10, 45, 100);
-		eventSelector = interactorFactory::newModule(1);
+		eventSelector = interactorFactory::make(INTERACTOR_EVENTSELECTOR);
 	};
-	void setOutput(module *m) override {
+	void setUiHardware(hardwareController & HWCont) override {
+		myX16pad = HWCont;
+	};
+	void setOutput(Module *m) override {
 		moutput = m;
 	};
-	void engage() override {};
-	void disengage() override {};
-	void receive(eventMessage evm) override {
+	void engage() override {
+		engaged = true;
+	};
+	void disengage() override {
+		eventSelector->disengage();
+		engaged = false;
+	};
+	void receive(EventMessage evm) override {
 		playHead++;
 		playHead %= 16;
 		if (dummyPattern[playHead][0] != 0) {
-			moutput->receive(eventMessage(dummyPattern[playHead][0], dummyPattern[playHead][1], dummyPattern[playHead][2]));
+			moutput->receive(EventMessage(dummyPattern[playHead][0], dummyPattern[playHead][1], dummyPattern[playHead][2]));
 			//midiOut.sendNoteOn();
 		}
-		updateLeds();
+		if (engaged) {
+			updateLeds();
+		}
 	}
 	void onMatrixButtonPressed(unsigned char button, unsigned int map) override {
-		dummyPattern[button][0] = 10 | (0<<12);
-		dummyPattern[button][1] = 40;
-		dummyPattern[button][2] = 110;
-		patternBitMap |= 0x1 << button;
-		updateLeds();
+		if (engaged) {
+			dummyPattern[button][0] = 10 | (0 << 12);
+			dummyPattern[button][1] = 40;
+			dummyPattern[button][2] = 110;
+			patternBitMap |= 0x1 << button;
+			updateLeds();
+		}
+		if ((*eventSelector).engaged == true) {
+
+		}
 	};
-	virtual ~sequencer() {};
+
+	virtual ~Sequencer() {};
 private:
-	bool mOn;
+	bool engaged=false;
 	void updateLeds() {
 		myX16pad.setLed(patternBitMap, 1 << playHead, 0);
 	}

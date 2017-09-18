@@ -203,15 +203,14 @@
     <ClInclude Include="src\hardwareController.h" />
     <ClInclude Include="src\hardwareView.h" />
     <ClInclude Include="src\interactorFactory.h" />
-    <ClInclude Include="src\interactions\eventSelector.h" />
-    <ClInclude Include="src\interactions\interactor.h" />
-    <ClInclude Include="src\interactions\patchMenu.h" />
+    <ClInclude Include="src\interactors\eventSelector.h" />
+    <ClInclude Include="src\interactors\interactor.h" />
     <ClInclude Include="src\moduleFactory.h" />
     <ClInclude Include="src\modules\midiDummy.h" />
     <ClInclude Include="src\modules\module.h" />
     <ClInclude Include="src\modules\sequencer.h" />
-    <ClInclude Include="src\modules\textDummy.h" />
     <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\patchMenu.h" />
     <ClInclude Include="src\timer.h" />
   </ItemGroup>
   <ItemGroup>

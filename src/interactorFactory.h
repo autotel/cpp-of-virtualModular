@@ -1,21 +1,18 @@
 #pragma once
 
-#include "./interactions/eventSelector.h"
-#include "./interactions/patchMenu.h"
-
+#include "./interactors/EventSelector.h"
+#define INTERACTOR_EVENTSELECTOR 0
+#define INTERACTOR_PATCHMENU 1
 class interactorFactory
 {
 public:
-	/*
-	static interactor *eventSelector() {
-		return new eventSelector;
-	}*/
-	static interactor *newModule(int  choice)
+
+
+	static Interactor *make(int  choice)
 	{
-		if (choice == 1)
-			return new eventSelector;
-		if (choice == 2)
-			return new patchMenu;
+		if (choice == 0)
+			return new EventSelector;
 		return 0;
 	}
+
 };

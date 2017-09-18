@@ -3,7 +3,7 @@
 #include "ofMain.h"
 
 class hardwareController {//: public ofBaseApp
-	
+
 	public:
 		void setup();
 		void addMatrixButttonPressedCallback(std::function<void(unsigned char button, unsigned int map)> onMatrixButton);

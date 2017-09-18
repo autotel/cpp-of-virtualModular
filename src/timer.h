@@ -3,19 +3,19 @@
 class Scheduler : public ofThread {
 public:
 	
-	Scheduler(module *m) {
+	Scheduler(Module *m) {
 		timer.setPeriodicEvent(125000000); // this is .125 second in nanoseconds
 		startThread();
 		mm = m;
 	}
 
 private:
-	module *mm;
+	Module *mm;
 	ofTimer timer;
 	void threadedFunction() {
 		while (isThreadRunning()) {
 			timer.waitNext();
-			eventMessage clockEvent= eventMessage(0);
+			EventMessage clockEvent= EventMessage(0);
 			mm->receive(clockEvent);
 		}
 	}

@@ -1,11 +1,11 @@
 #pragma once
-class moduleView
+class ModuleView
 {
 public:
-	moduleView() {}
-	int addModule(module *m) {
+	ModuleView() {}
+	int addModule(Module *m) {
 		int reference = 0;
-		//add the module to the list of module pointers (modules[]), 
+		//add the module to the list of module pointers (modules[]),
 		//and return a reference where the pointer is stored in modules[]
 		return reference;
 	}
@@ -14,11 +14,11 @@ public:
 		//run engage in the newly viewed module
 		//store the reference to the current module
 	}
-	//for every user input event, 
+	//for every user input event,
 	void onMatrixButton() {
 		//forward the event to the currently selected module
 	}
 private:
 	//TODO: of course, this should be  a vector and not an array
-	module *modules[16];
+	Module *modules[16];
 };

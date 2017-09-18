@@ -1,4 +1,4 @@
-#include "hardwareController.h"
+#include "HardwareController.h"
 #define SOFT_BAUDRATE 19200
 
 //recieve headers
@@ -58,7 +58,7 @@ int byteNumber = 0;
 void hardwareController::setup(){
 	serial.listDevices();
 	vector <ofSerialDeviceInfo> deviceList = serial.getDeviceList();
-	
+
 	// this should be set to whatever com port your serial device is connected to.
 	// (ie, COM4 on a pc, /dev/tty.... on linux, /dev/tty... on a mac)
 	// arduino users check in arduino app....
@@ -197,7 +197,7 @@ void hardwareController::checkMessages() {
 				byteNumber = 0;
 			}
 		}
-		
+
 	}
 }
 

@@ -1,14 +1,14 @@
-﻿#ifndef module
-#include "./modules/module.h"
+#ifndef Module
+#include "./modules/Module.h"
 #endif // !module
 #include "ofxMidi.h"
 //https://github.com/danomatika/ofxMidi
 
-class midiDummy : public module
+class MidiDummy : public Module
 {
 public:
 	ofxMidiOut midiOut;
-	module *moutput;
+	Module *moutput;
 	class headers {
 		public:
 			int noteOn = 0;
@@ -17,7 +17,7 @@ public:
 	};
 	void init(hardwareController & HWCont) override {
 		ofLog(OF_LOG_NOTICE,"created midi dummy");
-		mOn = true; 
+		mOn = true;
 
 		midiOut.listPorts(); // via instance
 							 //ofxMidiOut::listPorts(); // via static too
@@ -26,12 +26,14 @@ public:
 							 //midiOut.openVirtualPort("ofxMidiOut"); // open a virtual port
 		midiOut.sendNoteOn(10, 45, 100);
 	};
-	void setOutput(module *m) override {
+	void setUiHardware(hardwareController & HWCont) override {
+	};
+	void setOutput(Module *m) override {
 		moutput = m;
 	};
 	void engage() override {};
 	void disengage() override {};
-	void receive(eventMessage m) override {
+	void receive(EventMessage m) override {
 		m.midiFill();
 		cout << "FnHead:" << (m.value[0] >> 12) << ", chan:" << (m.value[0] & 0xff) << ", val a:" << m.value[1] << ", val b:" << m.value[2] << "\n";
 		switch (m.value[0]>>12) {
@@ -52,10 +54,10 @@ public:
 		}
 	}
 	void onMatrixButtonPressed(unsigned char button, unsigned int map) override {
-		mOn = false; 
+		mOn = false;
 		midiOut.sendNoteOn(10, 36+button, 100);
 	};
-	virtual ~midiDummy() {};
+	virtual ~MidiDummy() {};
 private:
 	bool mOn;
 };

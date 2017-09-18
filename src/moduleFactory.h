@@ -1,24 +1,21 @@
 #pragma once
 
 
-#include "./modules/midiDummy.h"
-#include "./modules/textDummy.h"
-#include "./modules/sequencer.h"
- 
+#include "./modules/MidiDummy.h"
+#include "./modules/Sequencer.h"
+
 #define MODULE_SEQUENCER 3
 #define MODULE_MIDI 1
 
 class moduleFactory
 {
 public:
-	static module *newModule(int  choice)
+	static Module *make(int  choice)
 	{
 		if (choice == 1)
-			return new midiDummy;
-		if (choice == 2)
-			return new textDummy;
+			return new MidiDummy;
 		if (choice == 3)
-			return new sequencer;
+			return new Sequencer;
 		return 0;
 	}
 };

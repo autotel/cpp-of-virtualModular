@@ -45,11 +45,11 @@
     <Filter Include="ofxMidi">
       <UniqueIdentifier>{1e85d7c3-693f-4805-9969-d96cb1cd3630}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\interactions">
-      <UniqueIdentifier>{35ce046d-4744-4a93-b4eb-ed954268eae5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\%28factories%29">
       <UniqueIdentifier>{cb2fb265-b439-4709-a202-b4c4ee45c5a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\interactors">
+      <UniqueIdentifier>{35ce046d-4744-4a93-b4eb-ed954268eae5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -63,9 +63,6 @@
       <Filter>src\modules</Filter>
     </ClInclude>
     <ClInclude Include="src\modules\module.h">
-      <Filter>src\modules</Filter>
-    </ClInclude>
-    <ClInclude Include="src\modules\textDummy.h">
       <Filter>src\modules</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxBaseMidi.h">
@@ -125,20 +122,20 @@
     <ClInclude Include="src\eventMessage.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\interactions\eventSelector.h">
-      <Filter>src\interactions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\interactions\patchMenu.h">
-      <Filter>src\interactions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\interactions\interactor.h">
-      <Filter>src\interactions</Filter>
-    </ClInclude>
     <ClInclude Include="src\interactorFactory.h">
       <Filter>src\%28factories%29</Filter>
     </ClInclude>
     <ClInclude Include="src\moduleFactory.h">
       <Filter>src\%28factories%29</Filter>
+    </ClInclude>
+    <ClInclude Include="src\interactors\eventSelector.h">
+      <Filter>src\interactors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\interactors\interactor.h">
+      <Filter>src\interactors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\patchMenu.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
