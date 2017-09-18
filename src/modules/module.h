@@ -2,8 +2,11 @@
 class Module
 {
 public:
-	virtual void init(hardwareController & HWCont) = 0;
-	virtual void setUiHardware(hardwareController & HWCont) = 0;
+
+	bool engaged = false;
+
+	virtual void init(HardwareController & HWCont) = 0;
+	virtual void setUiHardware(HardwareController & HWCont) = 0;
 
 	virtual bool onMatrixButtonPressed(unsigned char button, unsigned int map) = 0;
 	virtual void engage() = 0;

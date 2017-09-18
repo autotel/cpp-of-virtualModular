@@ -2,9 +2,10 @@
 
 #include "ofMain.h"
 
-class hardwareController {//: public ofBaseApp
+class HardwareController {//: public ofBaseApp
 
 	public:
+		HardwareController();
 		void setup();
 		void addMatrixButttonPressedCallback(std::function<void(unsigned char button, unsigned int map)> onMatrixButton);
 		std::function<void(unsigned char button, unsigned int map)>matrixButtonCallback;

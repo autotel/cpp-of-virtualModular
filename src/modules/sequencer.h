@@ -14,12 +14,12 @@ public:
 	int patternBitMap = 0x0000;
 	int playHead = 0;
 
-	Interactor *eventSelector;
+	Interactor* eventSelector;
 
 
-	hardwareController myX16pad;
-	void init(hardwareController & HWCont) override {
-		myX16pad = HWCont;
+	HardwareController* myX16pad;
+	void init(HardwareController & HWCont) override {
+		myX16pad = &HWCont;
 		ofLog(OF_LOG_NOTICE, "created midi dummy");
 		for (int a = 0; a < 16; a++) {
 			dummyPattern[a][0] = 0;
@@ -32,8 +32,8 @@ public:
 		//midiOut.sendNoteOn(10, 45, 100);
 		eventSelector = interactorFactory::make(INTERACTOR_EVENTSELECTOR);
 	};
-	void setUiHardware(hardwareController & HWCont) override {
-		myX16pad = HWCont;
+	void setUiHardware(HardwareController & HWCont) override {
+		myX16pad = &HWCont;
 	};
 	void setOutput(Module *m) override {
 		moutput = m;
@@ -74,8 +74,7 @@ public:
 
 	virtual ~Sequencer() {};
 private:
-	bool engaged=false;
 	void updateLeds() {
-		myX16pad.setLed(patternBitMap, 1 << playHead, 0);
+		myX16pad->setLed(patternBitMap, 1 << playHead, 0);
 	}
 };

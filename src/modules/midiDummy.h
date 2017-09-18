@@ -15,18 +15,18 @@ public:
 			int noteOff = 1;
 			int noteWithLength = 2;
 	};
-	void init(hardwareController & HWCont) override {
+	void init(HardwareController & HWCont) override {
 		ofLog(OF_LOG_NOTICE,"created midi dummy");
 		mOn = true;
 
 		midiOut.listPorts(); // via instance
 							 //ofxMidiOut::listPorts(); // via static too
-		midiOut.openPort(6); // by number
+		midiOut.openPort(0); // by number
 							 //midiOut.openPort("IAC Driver Pure Data In"); // by name
 							 //midiOut.openVirtualPort("ofxMidiOut"); // open a virtual port
 		midiOut.sendNoteOn(10, 45, 100);
 	};
-	void setUiHardware(hardwareController & HWCont) override {
+	void setUiHardware(HardwareController & HWCont) override {
 	};
 	void setOutput(Module *m) override {
 		moutput = m;

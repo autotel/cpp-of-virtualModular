@@ -5,8 +5,8 @@
 class EventSelector : public Interactor
 {
 public:
-	hardwareController myHWCont;
-	void init(hardwareController & HWCont) override {
+	HardwareController myHWCont;
+	void init(HardwareController & HWCont) override {
 
 	};
 	void engage() override {

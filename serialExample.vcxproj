@@ -179,7 +179,7 @@
     <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiIn.cpp" />
     <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiMessage.cpp" />
     <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiOut.cpp" />
-    <ClCompile Include="src\hardwareController.cpp" />
+    <ClCompile Include="src\HardwareController.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
   </ItemGroup>
@@ -200,7 +200,7 @@
     <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiOut.h" />
     <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiTypes.h" />
     <ClInclude Include="src\eventMessage.h" />
-    <ClInclude Include="src\hardwareController.h" />
+    <ClInclude Include="src\HardwareController.h" />
     <ClInclude Include="src\hardwareView.h" />
     <ClInclude Include="src\interactorFactory.h" />
     <ClInclude Include="src\interactors\eventSelector.h" />

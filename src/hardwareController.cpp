@@ -55,7 +55,11 @@ int byteNumber = 0;
 #define EOMessage 3
 #define unknown -1
 
-void hardwareController::setup(){
+HardwareController::HardwareController() {};
+
+//void HardwareController::HardwareController() {};
+void HardwareController::setup(){
+	
 	serial.listDevices();
 	vector <ofSerialDeviceInfo> deviceList = serial.getDeviceList();
 
@@ -69,7 +73,7 @@ void hardwareController::setup(){
 	//serial.setup("/dev/ttyUSB0", baud); //linux example
 }
 
-void hardwareController::addMatrixButttonPressedCallback(std::function<void(unsigned char, unsigned int)> onMatrixButton) {
+void HardwareController::addMatrixButttonPressedCallback(std::function<void(unsigned char, unsigned int)> onMatrixButton) {
 	//or maybe I should do this? http://openframeworks.cc/documentation/events/ofEvent/
 	//only that current method is compatible with arduino, better for learning...
 	matrixButtonCallback = onMatrixButton;
@@ -77,7 +81,7 @@ void hardwareController::addMatrixButttonPressedCallback(std::function<void(unsi
 
 //send a string which has dynamic length
 
-void hardwareController::sendString(unsigned char header, char str[] ) {
+void HardwareController::sendString(unsigned char header, char str[] ) {
 	//from https://github.com/openframeworks/openFrameworks/issues/279
 #define HEADSIZE 2
 	string msg(str);
@@ -92,7 +96,7 @@ void hardwareController::sendString(unsigned char header, char str[] ) {
 
 // to be ran in a loop
 
-void hardwareController::checkMessages() {
+void HardwareController::checkMessages() {
 	while (serial.available() && (byteNumber < serialInLength)) {
 		//delayMicroseconds(100);
 		unsigned char data_a = serial.readByte();
@@ -202,7 +206,7 @@ void hardwareController::checkMessages() {
 }
 
 //react and split messages
-void hardwareController::messageReceived(unsigned char datarray [], int len) {
+void HardwareController::messageReceived(unsigned char datarray [], int len) {
 	//ofLog(OF_LOG_NOTICE, "message received %d", datarray[0]);
 	int a = 0;
 	unsigned char header = datarray[a];
@@ -224,7 +228,7 @@ void hardwareController::messageReceived(unsigned char datarray [], int len) {
 	}
 }
 //TODO This is working strange, I can't figure out why yet.
-void hardwareController::setLed(int r, int g, int b) {
+void HardwareController::setLed(int r, int g, int b) {
 	unsigned char msg[] = {
 		TH_ledMatrix,
 		g & 0xff,(g >> 8) & 0xff,
@@ -234,9 +238,9 @@ void hardwareController::setLed(int r, int g, int b) {
 	serial.writeBytes(msg, TH_ledMatrix_len + 1);
 }
 
-void hardwareController::sendScreenA(char str[]) {
+void HardwareController::sendScreenA(char str[]) {
 	sendString(3, str);
 }
-void hardwareController::sendScreenB(char str[]) {
+void HardwareController::sendScreenB(char str[]) {
 	sendString(4, str);
 }

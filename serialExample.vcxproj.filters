@@ -7,9 +7,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\hardwareController.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxBaseMidi.cpp">
       <Filter>ofxMidi</Filter>
     </ClCompile>
@@ -34,6 +31,9 @@
     <ClCompile Include="..\..\..\addons\ofxMidi\libs\rtmidi\RtMidi.cpp">
       <Filter>ofxMidi</Filter>
     </ClCompile>
+    <ClCompile Include="src\HardwareController.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -54,9 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hardwareController.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\modules\midiDummy.h">
@@ -135,6 +132,9 @@
       <Filter>src\interactors</Filter>
     </ClInclude>
     <ClInclude Include="src\patchMenu.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HardwareController.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

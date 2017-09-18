@@ -1,5 +1,5 @@
 #include "ofApp.h"
-#include "hardwareController.h"
+#include "HardwareController.h"
 #include "EventMessage.h"
 #include "interactorFactory.h"
 #include "moduleFactory.h"
@@ -7,14 +7,12 @@
 #include "HardwareView.h"
 #include "timer.h"
 
-
-hardwareController x16pad;
-//use factory pattern
-//https://en.wikibooks.org/wiki/C%2B%2B_Programming/Code/Design_Patterns#Programming_Patterns
+vector <HardwareController> uiHardwares;
 
 PatchMenu patchMenu;
 vector <Module *> modules;
 Scheduler *ttimer;
+
 
 
 void onMatrixButton(unsigned char button, unsigned int map) {
@@ -22,20 +20,30 @@ void onMatrixButton(unsigned char button, unsigned int map) {
 	patchMenu.onMatrixButtonPressed(button, map);
 };
 
-void ofApp::setup(){
-	patchMenu = PatchMenu(x16pad,modules);
+void ofApp::setup() {
+
+
+
+
 	modules.push_back(moduleFactory::make(MODULE_SEQUENCER));
 	modules.push_back(moduleFactory::make(MODULE_MIDI));
 	modules[0]->setOutput(modules[1]);
 	ttimer = new Scheduler(modules[0]);
-	//TODO: there totally are more elegant ways for this:
-	x16pad.setup();
-	x16pad.addMatrixButttonPressedCallback(onMatrixButton);
+
+
+
+	//TODO: must be more elegant ways for this:
+	uiHardwares.push_back(HardwareController());
+	uiHardwares[0].setup();
+	uiHardwares[0].addMatrixButttonPressedCallback(onMatrixButton);
+	uiHardwares[0].sendScreenA("test");
+	
+	patchMenu.init(uiHardwares[0], modules);
 
 	if (!modules[0])
 		ofLog(OF_LOG_NOTICE, "mm evals false");
-	modules[0]->init(x16pad);
-	modules[1]->init(x16pad);
+	modules[0]->init(uiHardwares[0]);
+	modules[1]->init(uiHardwares[0]);
 
 	bSendSerialMessage = false;
 #if GUI
@@ -44,20 +52,19 @@ void ofApp::setup(){
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	font.load("DIN.otf", 64);
 #endif
-	serial.listDevices();
-	vector <ofSerialDeviceInfo> deviceList = serial.getDeviceList();
+	
 
+	patchMenu.engage();
+	/*
 	nTimesRead = 0;
 	nBytesRead = 0;
 	readTime = 0;
-	memset(bytesReadString, 0, 4);
-
-
+	memset(bytesReadString, 0, 4);*/
 }
 
 
 void ofApp::update(){
-	x16pad.checkMessages();
+	uiHardwares[0].checkMessages();
 }
 
 void ofApp::draw(){
