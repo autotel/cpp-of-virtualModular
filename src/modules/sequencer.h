@@ -56,17 +56,20 @@ public:
 			updateLeds();
 		}
 	}
-	void onMatrixButtonPressed(unsigned char button, unsigned int map) override {
+	bool onMatrixButtonPressed(unsigned char button, unsigned int map) override {
 		if (engaged) {
 			dummyPattern[button][0] = 10 | (0 << 12);
 			dummyPattern[button][1] = 40;
 			dummyPattern[button][2] = 110;
 			patternBitMap |= 0x1 << button;
 			updateLeds();
+			return true;
 		}
-		if ((*eventSelector).engaged == true) {
+		if ((*eventSelector).engaged) {
 
+			return true;
 		}
+		return false;
 	};
 
 	virtual ~Sequencer() {};

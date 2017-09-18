@@ -19,14 +19,11 @@ Scheduler *ttimer;
 
 void onMatrixButton(unsigned char button, unsigned int map) {
 	ofLog(OF_LOG_NOTICE, "callback received %d %d",button,map);
-	//TODO: use iterator, not this
-	for (int a = 0; a < modules.size(); a++) {
-		modules[a]->onMatrixButtonPressed(button, map);
-	}
+	patchMenu.onMatrixButtonPressed(button, map);
 };
 
 void ofApp::setup(){
-	patchMenu = PatchMenu(x16pad);
+	patchMenu = PatchMenu(x16pad,modules);
 	modules.push_back(moduleFactory::make(MODULE_SEQUENCER));
 	modules.push_back(moduleFactory::make(MODULE_MIDI));
 	modules[0]->setOutput(modules[1]);

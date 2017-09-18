@@ -53,9 +53,10 @@ public:
 			case 0x90: break;
 		}
 	}
-	void onMatrixButtonPressed(unsigned char button, unsigned int map) override {
+	bool onMatrixButtonPressed(unsigned char button, unsigned int map) override {
 		mOn = false;
 		midiOut.sendNoteOn(10, 36+button, 100);
+		return false;
 	};
 	virtual ~MidiDummy() {};
 private:

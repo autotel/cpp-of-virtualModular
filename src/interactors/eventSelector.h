@@ -16,7 +16,8 @@ public:
 	void disengage() override {
 		engaged = false;
 	};
-	void onMatrixButtonPressed(unsigned char button, unsigned int map) override {
+	bool onMatrixButtonPressed(unsigned char button, unsigned int map) override {
+		return engaged;
 	};
 	virtual ~EventSelector() {};
 private:
